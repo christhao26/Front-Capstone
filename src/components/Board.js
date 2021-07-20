@@ -8,8 +8,8 @@ export default class Board extends Component {
     super(props);
     //if there's a localStorage to be had grab it otherwise set state
     // if(localStorage.getItem('lists')) {
-      const rawLS = localStorage.getItem('lists');
-      const parsedLS = JSON.parse(rawLS);
+      // const rawLS = localStorage.getItem('lists');
+      // const parsedLS = JSON.parse(rawLS);
       this.state = { lists: [] }
     // } else {
       // this.state = {
@@ -74,6 +74,7 @@ export default class Board extends Component {
       // }
 
       localStorage.setItem('lists', JSON.stringify(this.state.lists))
+      console.log(localStorage.getItem("lists"))
     // }
   }
 componentDidMount = () => {
@@ -87,19 +88,31 @@ componentDidMount = () => {
   .then(data => {
     console.log(data.data, "data from board")
     this.setState({lists: data.data})
-
+localStorage.setItem("lists",JSON.stringify(this.state.lists))
   })
 }
 
   //get id of item being dragged and list where it's coming from
   onDragStart = (e, fromList) => {
     console.log(`what a drag!`)
+    console.log(fromList)
     const dragInfo = {
       taskId: e.currentTarget.id,
       fromList: fromList
     }
   
     localStorage.setItem('dragInfo', JSON.stringify(dragInfo));
+  }
+componentDidUpdate(){
+  console.log(this.state.lists)
+  axios({
+    method: "post",
+    url:"http://localhost:8080/api/lists/post/all",
+    headers: {
+      credentials: 'include',
+    },
+    data:this.state.lists
+  })
   }
 
   onDragOver = (e) => {
@@ -110,14 +123,18 @@ componentDidMount = () => {
     //get the dropped task card, the localStorage, 
     const droppedTask = localStorage.getItem('dragInfo');
     const rawLS = localStorage.getItem('lists');
+   
     const parsedLS = JSON.parse(rawLS);
+    console.log(parsedLS)
     const parsedDragInfo = JSON.parse(droppedTask)
     
     //get task cards array, get rid of moved card, and put a new card
     // in the list where it was dropped
+    console.log(parsedDragInfo)
+    console.log(parsedLS[parsedDragInfo.fromList ])
     const cardsArray = parsedLS[parsedDragInfo.fromList].cards
-    const taskCard = cardsArray.find(card => card.timeId == parsedDragInfo.taskId)
-    const indexOfCard = cardsArray.findIndex(card => card.timeId == parsedDragInfo.taskId)
+    const taskCard = cardsArray.find(card => card.timeId === parsedDragInfo.taskId)
+    const indexOfCard = cardsArray.findIndex(card => card.timeId === parsedDragInfo.taskId)
     parsedLS[parsedDragInfo.fromList].cards.splice(indexOfCard, 1)
     parsedLS[listNum].cards.push({...taskCard, listNumber: parseInt(listNum)})
    
