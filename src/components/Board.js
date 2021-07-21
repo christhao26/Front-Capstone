@@ -119,6 +119,11 @@ localStorage.setItem("lists",JSON.stringify(this.state.lists))
 //   })
 //   }
 
+handleDelete=(item)=> {
+  const updatedTodoItems =this.state.listNumbers.filter((aTodoItem => aTodoItem.id !== item.id))
+  this.setState([...updatedTodoItems]);
+}
+
   onDragOver = (e) => {
     e.preventDefault();
   }
@@ -180,7 +185,8 @@ render() {
   const lists = this.state.lists.map((list, index) => (
     <li className="list-wrapper" key={index}>
       <List {...list} 
-        // onAdd={(taskText, listNumber) => this.addTaskCard(taskText, listNumber)} 
+        onAdd={(taskText, listNumber) => this.addTaskCard(taskText, listNumber)} 
+        onDelete= {(e)=> this.handleDelete(e.target.listNumber)}
         onDragStart={(e, fromList) => this.onDragStart(e, `${list.id}`)}
         onDragOver={(e) => this.onDragOver(e)} 
         onDrop={(e, listNum) => {this.onDrop(e, `${list.id}`)}}

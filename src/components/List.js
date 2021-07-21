@@ -24,7 +24,8 @@ export default class List extends React.Component {
         <ul className="list" onDragOver={this.props.onDragOver} onDrop={this.props.onDrop}>
           {cards}
           <li className="add-list-wrapper">
-            <AddTaskForm formNum={this.props.id} onAdd={this.props.onAdd} />
+            <AddTaskForm formNum={this.props.id} onAdd={this.props.onAdd}
+            onDelete= {this.props.handleDelete}/>
           </li>
         </ul>
       </div>
