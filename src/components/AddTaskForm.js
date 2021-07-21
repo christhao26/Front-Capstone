@@ -31,20 +31,20 @@ export default class AddTaskForm extends React.Component {
        editing
      });
    }
-   deleteTodoItem = ()=> {
-         axios({
-        method: 'DElETE',
-        url: "http://localhost:8080/api/todoItems/{id}",
-        headers: {
-         credentials: 'include',
-        }
-      })
-      .then(data => {
-        console.log(data.data, "data from Backend")
-        this.setState({lists: data.data})
-   //  localStorage.setItem("lists",JSON.stringify(this.state.lists))
-      })
-    }
+  //  deleteTodoItem = ()=> {
+  //        axios({
+  //       method: 'DElETE',
+  //       url: "http://localhost:8080/api/todoItems/{id}",
+  //       headers: {
+  //        credentials: 'include',
+  //       }
+  //     })
+  //     .then(data => {
+  //       console.log(data.data, "data from Backend")
+  //       this.setState({lists: data.data})
+  //  //  localStorage.setItem("lists",JSON.stringify(this.state.lists))
+  //     })
+  //   }
    render() {
       console.log(this.props,"from addTask");
      if(!this.state.editing) {

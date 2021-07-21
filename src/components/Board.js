@@ -125,6 +125,10 @@ handleDelete=(itemId, columnId)=> {
   const updatedLists = this.state.lists;
   updatedLists[columnId].cards = updatedTodoItems;
   this.setState({lists: updatedLists})
+
+  axios.delete('http://localhost:8080/api/todoItems/'+ itemId)
+  .then(data=> console.log(data))
+
   
 }
 handleEdit=(itemId, columnId, newText)=> {
@@ -133,7 +137,13 @@ handleEdit=(itemId, columnId, newText)=> {
   const cardIndex = this.state.lists[columnId].cards.indexOf(editTodoCard)
   const editedLists = this.state.lists;
   editedLists[columnId].cards[cardIndex].taskText= newText;
+  const updatedCard =  editedLists[columnId].cards[cardIndex];
   this.setState({lists: editedLists})
+
+  console.log(updatedCard)
+  
+  axios.put('http://localhost:8080/api/todoItems/'+ itemId, updatedCard)
+  .then(data=> console.log(data))
   
 }
 
@@ -181,8 +191,10 @@ handleEdit=(itemId, columnId, newText)=> {
       listNumber,
       timeId: new Date().valueOf()
     }
-
     console.log("this is new task", newTask)
+
+    axios.post('http://localhost:8080/api/todoItems',newTask)
+    .then(data=> console.log(data))
 
     parsedLS[listNumber].cards.push(newTask)
 
