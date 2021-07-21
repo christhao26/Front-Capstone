@@ -119,9 +119,22 @@ localStorage.setItem("lists",JSON.stringify(this.state.lists))
 //   })
 //   }
 
-handleDelete=(item)=> {
-  const updatedTodoItems =this.state.listNumbers.filter((aTodoItem => aTodoItem.id !== item.id))
-  this.setState([...updatedTodoItems]);
+handleDelete=(itemId, columnId)=> {
+  console.log("state", columnId)
+  const updatedTodoItems =this.state.lists[columnId].cards.filter(card => card.timeId != itemId)
+  const updatedLists = this.state.lists;
+  updatedLists[columnId].cards = updatedTodoItems;
+  this.setState({lists: updatedLists})
+  
+}
+handleEdit=(itemId, columnId, newText)=> {
+  console.log("state", columnId)
+  const editTodoCard =this.state.lists[columnId].cards.filter(card => card.timeId == itemId)[0]
+  const cardIndex = this.state.lists[columnId].cards.indexOf(editTodoCard)
+  const editedLists = this.state.lists;
+  editedLists[columnId].cards[cardIndex].taskText= newText;
+  this.setState({lists: editedLists})
+  
 }
 
   onDragOver = (e) => {
@@ -169,6 +182,8 @@ handleDelete=(item)=> {
       timeId: new Date().valueOf()
     }
 
+    console.log("this is new task", newTask)
+
     parsedLS[listNumber].cards.push(newTask)
 
     //sync state and localStorage
@@ -186,7 +201,9 @@ render() {
     <li className="list-wrapper" key={index}>
       <List {...list} 
         onAdd={(taskText, listNumber) => this.addTaskCard(taskText, listNumber)} 
-        onDelete= {(e)=> this.handleDelete(e.target.listNumber)}
+        handleDelete={this.handleDelete}
+        handleEdit={this.handleEdit}
+        // onDelete= {(e)=> this.handleDelete(e.target.listNumber)}
         onDragStart={(e, fromList) => this.onDragStart(e, `${list.id}`)}
         onDragOver={(e) => this.onDragOver(e)} 
         onDrop={(e, listNum) => {this.onDrop(e, `${list.id}`)}}
