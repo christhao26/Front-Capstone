@@ -4,25 +4,31 @@ import axios from 'axios';
 export default class EditTaskForm extends React.Component {
   state = {
        editing:false,
-       todoItems: null,
+       input: this.props.taskText,
      }
 
    onSubmit(event) {
      event.preventDefault();
-     const newText = this.textInput.value.trim();
+     const newText = this.state.input.trim();
      const columnId = this.props.columnId;
      const itemId = this.props.itemId;
      if (newText && this.props.onEdit) {
        this.props.onEdit(itemId, columnId, newText);
      }
-     this.textInput.value = '';
+   }
+
+   handleInputChange(event) {
+       this.setState({input:event.target.value});
+       console.log("input:", this.state.input)
    }
  
-  setEditing(editing) {
-     this.setState({
-       editing
-     });
-   }
+//   setEditing(edit) {
+//      this.setState({
+//        editing
+//      });
+//    }
+
+ 
  
    render() {
       console.log(this.props,"from addTask");
@@ -34,10 +40,10 @@ export default class EditTaskForm extends React.Component {
     //  }
        return (
          <form className="card add-task-form" onSubmit={(e) => this.onSubmit(e)}>
-           <input type="text" class="task-input" value= {this.props.taskText} ref={input => this.textInput = input} aria-label="Add a task" />
+           <input type="text" class="task-input" value= {this.state.input} onChange= {(e) => this.handleInputChange(e)} aria-label="Add a task" />
              <div>
              <button className="button add-button">Add Edit</button>
-             <button className="button cancel-button" onClick={() => this.setEditing(false)}>Cancel</button>
+             <button className="button cancel-button" onClick={this.props.handleCancel}>Cancel</button>
            </div>
             </form>
        );

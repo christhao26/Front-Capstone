@@ -59,7 +59,6 @@ export default class AddTaskForm extends React.Component {
              <div>
              <button className="button add-button">Add Task</button>
              <button className="button cancel-button" onClick={() => this.setEditing(false)}>Cancel</button>
-             <button className="button add-button">Edit</button>
            </div>
             </form>
        );
