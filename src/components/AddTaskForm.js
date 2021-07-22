@@ -24,7 +24,7 @@ export default class AddTaskForm extends React.Component {
      if ( this.props.onDelete) {
        this.props.onDelete( listNumber);
      }
-     // this.textInput.value = '';
+
    }
   setEditing(editing) {
      this.setState({
