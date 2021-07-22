@@ -1,16 +1,18 @@
 .list {
     list-style-type: none;
     padding-left: 0;
-    background: #E0E0E0;
     margin: 0 5px;
     padding: 8px;
-    border-radius: 2px;
+    border-radius: 9px;
+    border: 1px solid black;
   }
   
   .name-header {
     text-align: center;
     padding: 6px 6px;
     margin: 0;
+    border-radius: 30px;
+    margin-bottom: 8px;
   }
   
   .name-0 {
@@ -18,11 +20,11 @@
   }
   
   .name-1 {
-    background-color: aqua;
+    background-color: rgb(58, 138, 138);
   }
   
   .name-2 {
-    background-color: rgb(101, 101, 159);
+    background-color: rgb(201, 114, 114);
   }
   
   .name-3 {

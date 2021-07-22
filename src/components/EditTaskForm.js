@@ -27,7 +27,7 @@ export default class EditTaskForm extends React.Component {
          <form className="card add-task-form" onSubmit={(e) => this.onSubmit(e)}>
            <input type="text" class="task-input" value= {this.state.input} onChange= {(e) => this.handleInputChange(e)} aria-label="Add a task" />
              <div>
-             <button className="button add-button">Add Edit</button>
+             <button className="button add-button">Edit</button>
              <button className="button cancel-button" onClick={this.props.handleCancel}>Cancel</button>
            </div>
             </form>
