@@ -11,3 +11,8 @@
   .task-card:hover {
     background-color: #f9f3f3;
   }
+
+  img {
+    height: 20px;
+    padding-left: 10px;
+  }
