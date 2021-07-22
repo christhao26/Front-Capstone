@@ -208,6 +208,9 @@ handleEdit=(itemId, columnId, newText)=> {
 
 
 render() {
+
+
+
   console.log(this.state)
   const lists = this.state.lists.map((list, index) => (
     <li className="list-wrapper" key={index}>
@@ -218,18 +221,20 @@ render() {
         // onDelete= {(e)=> this.handleDelete(e.target.listNumber)}
         onDragStart={(e, fromList) => this.onDragStart(e, `${list.id}`)}
         onDragOver={(e) => this.onDragOver(e)} 
-        onDrop={(e, listNum) => {this.onDrop(e, `${list.id}`)}}
-      />
+        onDrop={(e, listNum) => {this.onDrop(e, `${list.id}`)}}/>
     </li>
+   
   ));
    
   return (
+    <>
+   
     <div className="board">
-      <h1>hiiiii</h1>
-      <ul className="lists">
+     <ul className="lists">
         {lists}
       </ul>
     </div>
+    </>
   );
   }
 }
