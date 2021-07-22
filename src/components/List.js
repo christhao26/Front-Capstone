@@ -5,9 +5,9 @@ import './List.css';
 
 
 export default class List extends React.Component {
-  constructor(props) {
-    super(props);
-    }
+  // constructor(props) {
+  //   super(props);
+  //   }
    
   render() {
     const cards = this.props.cards.map((card, index) => {
