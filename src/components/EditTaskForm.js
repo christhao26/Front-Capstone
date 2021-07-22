@@ -21,10 +21,6 @@ export default class EditTaskForm extends React.Component {
        console.log("input:", this.state.input)
    }
  
-
-
- 
- 
    render() {
   
        return (
