@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './TaskCard.css';
 import EditTaskForm from './EditTaskForm';
-import Trashcan from '../images/trashcan.png';
+import Trashcan from '../images/tashcan2.png';
 
 export default function TaskCard(props) {
 
