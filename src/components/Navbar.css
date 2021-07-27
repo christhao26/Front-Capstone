@@ -10,7 +10,10 @@
     margin-left: 2rem;
     font-size: 2rem;
     background: none;
+
   }
+
+  
   
   .nav-menu {
     background-color: #060b26;
@@ -69,4 +72,10 @@
   
   span {
     margin-left: 16px;
+  }
+
+  h1 {
+    color:rgb(209, 42, 42);
+    font-size: 28px;
+    padding-left: 10px;
   }

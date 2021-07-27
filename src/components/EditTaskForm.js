@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 
 export default class EditTaskForm extends React.Component {
   state = {
@@ -21,17 +21,14 @@ export default class EditTaskForm extends React.Component {
        console.log("input:", this.state.input)
    }
  
-
-
- 
- 
    render() {
   
        return (
          <form className="card add-task-form" onSubmit={(e) => this.onSubmit(e)}>
-           <input type="text" class="task-input" value= {this.state.input} onChange= {(e) => this.handleInputChange(e)} aria-label="Add a task" />
+           <input type="text" class="task-input" value= {this.state.input} onChange= {(e) => 
+            this.handleInputChange(e)} aria-label="Add a task" />
              <div>
-             <button className="button add-button"> Edit</button>
+             <button type = "submit" className="button add-button">Edit</button>
              <button className="button cancel-button" onClick={this.props.handleCancel}>Cancel</button>
            </div>
             </form>

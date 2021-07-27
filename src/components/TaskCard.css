@@ -1,13 +1,32 @@
 .task-card {
-    background: #ffffff;
+    background:#FAFAFA;
     margin-bottom: 8px;
     padding: 8px;
-    border-radius: 2px;
+    border-radius: 8px;
     word-break: break-all;
     word-wrap: break-word;
     cursor: pointer;
+    border: 3px solid rgb(155, 12, 12);
   }
   
   .task-card:hover {
     background-color: #f9f3f3;
+  }
+
+  /* img {
+    height: 20px;
+    padding-left: 10px;
+    background-color: rgb(247, 234, 234);
+   
+  } */
+
+  .trash-content{
+    display:flex;
+    justify-content: space-between;
+  }
+ 
+  #just-for-trashcan{
+    height: 20px;
+     margin-left: 10px;
+    background-color: none;
   }

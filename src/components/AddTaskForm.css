@@ -2,7 +2,7 @@
     background: #FAFAFA;
     margin-bottom: 8px;
     padding: 8px;
-    border-radius: 2px;
+    border-radius: 8px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -12,7 +12,7 @@
   }
   
   .button {
-    border-radius: 2px;
+    border-radius: 8px;
     color: #fff;
     cursor: pointer;
   }
@@ -32,17 +32,17 @@
   
   .open-add-button {
     padding: 8px;
-    border-radius: 2px;
+    border-radius: 8px;
   }
   
   .open-add-button a {
     text-decoration: none;
   }
   
-  .list .open-add-button:hover {
-    background: #BDBDBD;
-  }
+  /* .list .open-add-button:hover {
+    background: rgb(247, 234, 234);
+  } */
   
   .list .open-add-button a {
-    color: black;
+    color:black;
   }

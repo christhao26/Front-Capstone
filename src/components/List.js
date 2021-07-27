@@ -13,7 +13,9 @@ export default class List extends React.Component {
     const cards = this.props.cards.map((card, index) => {
       return ( 
         <li key={index}>
-          <TaskCard {...card} onDragStart={this.props.onDragStart} handleDelete={this.props.handleDelete} columnId= {this.props.id} handleEdit={this.props.handleEdit}/>
+          <TaskCard {...card} onDragStart={this.props.onDragStart}
+           handleDelete={this.props.handleDelete} columnId= {this.props.id}
+           handleEdit={this.props.handleEdit}/>
         </li>
       );
     })
